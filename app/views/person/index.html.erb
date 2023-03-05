@@ -3,6 +3,6 @@
 <%= button_to "Add New Person", new_person_path, method: :get %>
 <ul>
     <% @people.each do |person| %>
-        <li><%= link_to person.first_name+" "+person.last_name, person_path(person)%></li>
+        <li><%= link_to person.salutation+" "+person.first_name+" "+person.last_name, person_path(person)%></li>
     <% end %>
 </ul>
