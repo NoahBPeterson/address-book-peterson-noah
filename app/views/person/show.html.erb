@@ -1,0 +1,37 @@
+<h1><%= @person.first_name%> <%=@person.last_name%>'s Contact Page</h1>
+
+<h2><%= link_to "Back to Address Book", "/person"%></h2>
+
+<h2>Comment</h2>
+<p><%= @person.comment%></p>
+
+<h2>Addresses</h2>
+<%= button_to "Add Address", new_address_path, params: {person_id: @person.id}, method: :get%>
+<ul>
+    <% @person.addresses.each do |address|%>
+        <li><%= address.street+", "+address.town+" "+address.zip_code %></li>
+        <li><%= address.state+", "+address.country%>
+        <%= button_to "Delete Address", address_path(address), method: :delete%>
+    <%end%>
+</ul>
+<h2>Emails</h2>
+<%= button_to "Add Email", new_email_path, params: {person_id: @person.id}, method: :get%>
+<ul>
+    <% @person.emails.each do |email|%>
+        <li><%= email.email_address%> * Comment: <%= email.comment%></li>
+        <%= button_to "Delete Email", email_path(email), method: :delete%>
+    <%end%>
+</ul>
+<h2>Phone Numbers</h2>
+<%= button_to "Add Phone Number", new_phonenumber_path, params: {person_id: @person.id}, method: :get%>
+<ul>
+    <% @person.phone_numbers.each do |number|%>
+        <li><%= number.phone_number %> * Comment: <%= number.comment%></li>
+        <%= button_to "Delete Number", phonenumber_path(number), method: :delete%>
+    <%end%>
+</ul>
+
+<%= button_to "Edit Person", edit_person_path, method: :get%>
+<%= button_to "Delete Person", person_path, method: :delete%>
+
+<%= link_to "Delete Person", person_path, method: :delete%>

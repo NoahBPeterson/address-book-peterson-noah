@@ -1,0 +1,26 @@
+<h1>New Person Form</h1>
+
+<% if flash[:errors]%>
+    <% flash[:errors].each do |error|%>
+        <p style="color: red"><%= error%></p>
+    <%end%>
+<%end%>
+
+<%= form_for @person do |f|%>
+    <%= f.label :salutation%>
+    <%= f.select :salutation, options_for_select([["Mr."], ["Ms."], ["Mrs."]])%>
+    <%= f.label :first_name%>
+    <%= f.text_field :first_name%>
+    <%= f.label :middle_name%>
+    <%= f.text_field :middle_name%>
+    <%= f.label :last_name%>
+    <%= f.text_field :last_name%>
+    <%= f.label :ssn%>
+    <%= f.number_field :ssn%>
+    <%= f.label :birth_date%>
+    <%= f.date_field :birthdate%>
+    <%= f.label :comment%>
+    <%= f.text_field :comment%>
+    
+    <%= f.submit%>
+<%end%>

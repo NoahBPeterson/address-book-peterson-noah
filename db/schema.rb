@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_01_162307) do
+ActiveRecord::Schema.define(version: 2023_03_05_153050) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,11 +21,15 @@ ActiveRecord::Schema.define(version: 2023_03_01_162307) do
     t.string "zip_code", null: false
     t.string "state"
     t.string "country"
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_addresses_on_person_id"
   end
 
   create_table "emails", force: :cascade do |t|
     t.string "email_address", null: false
     t.text "comment"
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_emails_on_person_id"
   end
 
   create_table "person", force: :cascade do |t|
@@ -41,6 +45,11 @@ ActiveRecord::Schema.define(version: 2023_03_01_162307) do
   create_table "phone_numbers", force: :cascade do |t|
     t.string "phone_number", null: false
     t.text "comment"
+    t.bigint "person_id", null: false
+    t.index ["person_id"], name: "index_phone_numbers_on_person_id"
   end
 
+  add_foreign_key "addresses", "person"
+  add_foreign_key "emails", "person"
+  add_foreign_key "phone_numbers", "person"
 end
