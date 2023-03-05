@@ -2,37 +2,37 @@ require "test_helper"
 
 class AddressesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get addresses_index_url
+    get "http://127.0.0.1:3000/addresses#index"
     assert_response :success
   end
 
   test "should get new" do
-    get addresses_new_url
+    get "http://127.0.0.1:3000/addresses#new"
     assert_response :success
   end
 
   test "should get create" do
-    get addresses_create_url
+    get "http://127.0.0.1:3000/addresses#create"
     assert_response :success
   end
 
   test "should get show" do
-    get addresses_show_url
+    get "http://127.0.0.1:3000/addresses#show"
     assert_response :success
   end
 
   test "should get edit" do
-    get addresses_edit_url
+    get "http://127.0.0.1:3000/addresses#edit"
     assert_response :success
   end
 
   test "should get update" do
-    get addresses_update_url
+    get "http://127.0.0.1:3000/addresses#update"
     assert_response :success
   end
 
   test "should get destroy" do
-    get addresses_destroy_url
+    get "http://127.0.0.1:3000/addresses#destroy"
     assert_response :success
   end
 end

@@ -2,37 +2,37 @@ require "test_helper"
 
 class EmailsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get emails_index_url
+    get "http://127.0.0.1:3000/emails#index"
     assert_response :success
   end
 
   test "should get new" do
-    get emails_new_url
+    get "http://127.0.0.1:3000/emails#new"
     assert_response :success
   end
 
   test "should get create" do
-    get emails_create_url
+    get "http://127.0.0.1:3000/emails#create"
     assert_response :success
   end
 
   test "should get show" do
-    get emails_show_url
+    get "http://127.0.0.1:3000/emails#show"
     assert_response :success
   end
 
   test "should get edit" do
-    get emails_edit_url
+    get "http://127.0.0.1:3000/addresses#edit"
     assert_response :success
   end
 
   test "should get update" do
-    get emails_update_url
+    get "http://127.0.0.1:3000/addresses#update"
     assert_response :success
   end
 
   test "should get destroy" do
-    get emails_destroy_url
+    get "http://127.0.0.1:3000/addresses#destroy"
     assert_response :success
   end
 end

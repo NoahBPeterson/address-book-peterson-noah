@@ -2,37 +2,37 @@ require "test_helper"
 
 class PersonControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get person_index_url
+    get "http://127.0.0.1:3000/person#index"
     assert_response :success
   end
 
   test "should get new" do
-    get person_new_url
+    get "http://127.0.0.1:3000/person#new"
     assert_response :success
   end
 
   test "should get create" do
-    get person_create_url
+    get "http://127.0.0.1:3000/person#create"
     assert_response :success
   end
 
   test "should get show" do
-    get person_show_url
+    get "http://127.0.0.1:3000/person#show"
     assert_response :success
   end
 
   test "should get edit" do
-    get person_edit_url
+    get "http://127.0.0.1:3000/person#edit"
     assert_response :success
   end
 
   test "should get update" do
-    get person_update_url
+    get "http://127.0.0.1:3000/person#update"
     assert_response :success
   end
 
   test "should get destroy" do
-    get person_destroy_url
+    get "http://127.0.0.1:3000/person#destroy"
     assert_response :success
   end
 end
