@@ -5,13 +5,11 @@
 
 * System dependencies - Rails 6.1.7.2
 
-* Configuration
+* Database creation - Create a database user with the name 'rails_user', and assign the role SUPERUSER. Then execute the command `rake db:create`, then `rake db:migrate`
 
-* Database creation - `rake db:create`
+* Running the website - `rails server`
 
-* Database initialization
-
-* How to run the test suite
+* How to run the test suite - `rails test`
 
 * Services (job queues, cache servers, search engines, etc.)
 
