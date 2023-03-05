@@ -1,9 +1,9 @@
 class Person < ApplicationRecord
     self.table_name = 'person'
 
-    has_many :emails
-    has_many :addresses
-    has_many :phone_numbers
+    has_many :emails, dependent: :destroy
+    has_many :addresses, dependent: :destroy
+    has_many :phone_numbers, dependent: :destroy
     
     validates_associated :emails
     validates_associated :addresses
