@@ -10,8 +10,6 @@ To set up:
 
 * System dependencies - Rails 6.1.7.2
 
-* Database creation - 
-
 * Running the website - `rails server`
 
 * How to run the test suite - `rails test`
