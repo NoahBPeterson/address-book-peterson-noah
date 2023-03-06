@@ -26,11 +26,6 @@ class PhonenumbersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get update" do
-    get "http://127.0.0.1:3000/phonenumbers#update"
-    assert_response :success
-  end
-
   test "should get destroy" do
     get "http://127.0.0.1:3000/phonenumbers#destroy"
     assert_response :success

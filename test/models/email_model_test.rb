@@ -13,9 +13,14 @@ class EmailModelTest < ActionDispatch::IntegrationTest
   end
 
   test "should save email with person" do
+    user = User.new
+    user.username = "123"
+    user.password = "123"
+    user.save
     person = Person.new
     person.first_name = "a"
     person.last_name = "b"
+    person.user_id = user.id
     person.save
     email = Email.new
     email.person_id = person.id

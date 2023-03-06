@@ -13,9 +13,14 @@ class PhoneNumberModelTest < ActionDispatch::IntegrationTest
   end
 
   test "should save number with person" do
+    user = User.new
+    user.username = "123"
+    user.password = "123"
+    user.save
     person = Person.new
     person.first_name = "a"
     person.last_name = "b"
+    person.user_id = user.id
     person.save
     number = PhoneNumber.new
     number.person_id = person.id

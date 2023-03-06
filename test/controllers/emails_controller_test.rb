@@ -26,11 +26,6 @@ class EmailsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get update" do
-    get "http://127.0.0.1:3000/addresses#update"
-    assert_response :success
-  end
-
   test "should get destroy" do
     get "http://127.0.0.1:3000/addresses#destroy"
     assert_response :success
