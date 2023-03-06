@@ -1,6 +1,10 @@
 class PersonController < ApplicationController
+
   def index
-    @people = Person.all
+    if !helpers.logged_in?
+      redirect_to login_path
+    end
+    @people = Person.where(user: helpers.current_user)
   end
 
   def new
@@ -8,8 +12,8 @@ class PersonController < ApplicationController
   end
 
   def create
-    @person = Person.create(params.require(:person).permit(:first_name, :last_name, :salutation, :middle_name, :ssn, :birthdate, :comment))
-    if @person.valid?
+    @person = Person.create(params.require(:person).permit(:first_name, :last_name, :salutation, :middle_name, :ssn, :birthdate, :comment, :user_id))
+    if @person.valid? && @person.user_id == helpers.current_user.id
       redirect_to controller: 'person', action: 'show', id: @person.id
     else
       flash[:errors] = @person.errors.full_messages
@@ -18,22 +22,36 @@ class PersonController < ApplicationController
   end
 
   def show
-    @person = Person.find(params[:id])
+    if Person.find(params[:id]).user_id == helpers.current_user.id
+      @person = Person.find(params[:id])
+    else
+      redirect_to action: "index"
+    end
   end
 
   def edit
-    @person = Person.find(params[:id])
+    if Person.find(params[:id]).user_id == helpers.current_user.id
+      @person = Person.find(params[:id])
+    else
+      redirect_to action: "index"
+    end
   end
 
   def update
-    @person = Person.find(params[:id])
-    @person.update(params.require(:person).permit(:first_name, :last_name, :salutation, :middle_name, :ssn, :birthdate, :comment))
-    redirect_to person_path(@person)
+    if Person.find(params[:id]).user_id == helpers.current_user.id
+      @person = Person.find(params[:id])
+      @person.update(params.require(:person).permit(:first_name, :last_name, :salutation, :middle_name, :ssn, :birthdate, :comment, :user_id))
+      redirect_to person_path(@person)
+    else
+      redirect_to action: "index"
+    end
   end
 
   def destroy
-    @person = Person.find(params[:id])
-    @person.destroy
+    if Person.find(params[:id]).user_id == helpers.current_user.id
+      @person = Person.find(params[:id])
+      @person.destroy
+    end
     redirect_to action: "index"
   end
 end
