@@ -1,4 +1,4 @@
-<h1>New Person Form</h1>
+<h1>Edit Person Form</h1>
 
 <% if flash[:errors]%>
     <% flash[:errors].each do |error|%>
@@ -6,21 +6,23 @@
     <%end%>
 <%end%>
 
+* Required<br><br>
+
 <%= form_for @person do |f|%>
     <%= f.label :salutation%>
-    <%= f.select :salutation, options_for_select([["Mr."], ["Ms."], ["Mrs."]])%>
-    <%= f.label :first_name%>
-    <%= f.text_field :first_name%>
+    <%= f.select :salutation, options_for_select([["Mr."], ["Ms."], ["Mrs."]])%><br>
+    <%= f.label :first_name%>*
+    <%= f.text_field :first_name%><br>
     <%= f.label :middle_name%>
-    <%= f.text_field :middle_name%>
-    <%= f.label :last_name%>
-    <%= f.text_field :last_name%>
+    <%= f.text_field :middle_name%><br>
+    <%= f.label :last_name%>*   
+    <%= f.text_field :last_name%><br>
     <%= f.label :ssn%>
-    <%= f.number_field :ssn%>
+    <%= f.number_field :ssn%><br>
     <%= f.label :birth_date%>
-    <%= f.date_field :birthdate%>
+    <%= f.date_field :birthdate%><br>
     <%= f.label :comment%>
-    <%= f.text_field :comment%>
+    <%= f.text_field :comment%><br><br>
     
     <%= f.submit%>
 <%end%>
